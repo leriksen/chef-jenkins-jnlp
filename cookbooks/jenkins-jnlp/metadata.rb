@@ -11,5 +11,3 @@ issues_url 'https://github.com/leriksen/jenkins-jnlp-chef/issues'
 
 recipe 'jenkins-jnlp::default', 'Install and configure jenkins-jnlp daemon'
 recipe 'jenkins-jnlp::uninstall-jenkins-jnlp', 'Uninstalls jenkins-jnlp daemon'
-
-depends 'devops'

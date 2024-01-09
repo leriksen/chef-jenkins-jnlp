@@ -7,11 +7,6 @@ package node['jenkins-jnlp']['pkg_name'] do
   action :remove
 end
 
-# file File.join(node['jenkins-jnlp']['conf_dir'], 'jenkins-jnlp.conf') do
-#   action :delete
-#   only_if { ::File.exist? File.join(node['jenkins-jnlp']['conf_dir'], 'jenkins-jnlp.conf') }
-# end
-
 file File.join(node['jenkins-jnlp']['sysconfig_dir'], node['jenkins-jnlp']['pkg_name']) do
   action :delete
   only_if { ::File.exist? File.join(node['jenkins-jnlp']['sysconfig_dir'], node['jenkins-jnlp']['pkg_name']) }
