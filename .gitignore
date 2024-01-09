@@ -1,0 +1,13 @@
+.chef/
+.idea/
+.kitchen/
+.profile
+.env
+.idea/
+.kitchen/
+.vagrant/
+Vagrantfile
+leriksen.pem
+syntaxcache
+chef_guid
+.data_bag_key
