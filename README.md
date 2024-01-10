@@ -52,6 +52,17 @@ A cookbook is the fundamental unit of configuration and policy distribution. A s
 
 For more information about cookbooks, see the example files in the `starter` cookbook.
 
+## Policy
+
+A policy file is located at `cookbooks/jenkins-jnlp/Policyfile.rb`
+
+To generate the lockfile, execute
+
+    $ chef install cookbooks/jenkins-jnlp/Policyfile.rb
+
+To push the policy to the Chef server, execute
+
+    $ knife upload 
 ## Roles
 
 Roles provide logical grouping of cookbooks and other roles. A sample role can be found at `roles/starter.rb`.
