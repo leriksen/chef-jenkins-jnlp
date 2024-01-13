@@ -24,6 +24,6 @@ template '/etc/systemd/system/jenkins.agent.service' do
   mode   '0655'
 end
 
-service 'jenkins.service' do
+service 'jenkins.agent' do
   action :start
 end
