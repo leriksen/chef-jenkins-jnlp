@@ -21,7 +21,7 @@ template '/etc/systemd/system/jenkins.agent.service' do
   source 'jenkins.agent.service.erb'
   owner  'root'
   group  'root'
-  mode   '0755'
+  mode   '0655'
 end
 
 service 'jenkins.service' do
