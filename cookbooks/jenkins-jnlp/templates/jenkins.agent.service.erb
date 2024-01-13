@@ -1,0 +1,14 @@
+[Unit]
+Description= jenkins JNLP agent service
+After=network.target
+
+[Service]
+Type=simple
+Restart=always
+RestartSec=5
+User=root
+WorkingDirectory=/home/vagrant
+ExecStart=java -jar /home/vagrant/agent.jar -jnlpUrl http://jenkins-master:8080/computer/agent/jenkins-agent.jnlp  -secret fe192cbc4426d896a2cd7ba9cb980566b734894b1d07dc55ed468d94ba186d88 -workDir "/var/lib/jenkins"
+
+[Install]
+WantedBy=multi-user.target

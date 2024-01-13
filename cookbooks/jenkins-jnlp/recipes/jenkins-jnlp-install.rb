@@ -10,5 +10,17 @@ package 'openjdk-11-jre' do
   action :install
 end
 
-execute 'run_agent' do
-  command "sudo java -jar agent.jar -jnlpUrl http://jenkins-master:9000/compu ter/agent/jenkins-agent.jnlp -secret b8526db756429715a7f220f7b0aa67713c435bdf06d002b7f4310ae7db4433ee -workDir "/var/lib/jenkins""
+execute 'curl_agent' do
+  command "curl -sO http://jenkins-master:8080/jnlpJars/agent.jar"
+  cwd "/home/vagrant"
+end
+
+directory '/var/lib/jenkins'
+
+template '/etc/systemd/system/jenkins.agent.service' do
+  source 'jenkins.agent.service.erb'
+end
+
+service 'jenkins.service' do
+  action :start
+end
