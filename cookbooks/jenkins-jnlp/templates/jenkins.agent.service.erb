@@ -8,7 +8,7 @@ Restart=always
 RestartSec=5
 User=root
 WorkingDirectory=/home/vagrant
-ExecStart=java -jar /home/vagrant/agent.jar -jnlpUrl http://jenkins-master:8080/computer/agent/jenkins-agent.jnlp  -secret fe192cbc4426d896a2cd7ba9cb980566b734894b1d07dc55ed468d94ba186d88 -workDir "/var/lib/jenkins"
+ExecStart=java -jar /home/vagrant/agent.jar -jnlpUrl http://jenkins-master:8080/computer/agent/jenkins-agent.jnlp -secret 742e122ffab5dec8810f5aa46ebbc292ce54638d4bc288fab2c26d1ef379fbb4 -workDir "/var/lib/jenkins"
 
 [Install]
 WantedBy=multi-user.target
