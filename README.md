@@ -46,10 +46,17 @@ After the VM is provisioned by Vagrant, perform the following
 
 ## Testing
 
+### Unit Testing with RSpec
 Note we exec everything in `chef exec` as we ant to constrain this all to the chef ruby, not the global ruby
 
+    * cd cookbooks/jenkins-jnlp
     * chef exec bundle install
     * chef exec bundle binstubs --all
+    * chef exec rspec
+
+### Integration Testing with InSpec
+
+TBA
 
 ## Cookbooks
 
