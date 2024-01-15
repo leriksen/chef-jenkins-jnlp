@@ -27,3 +27,5 @@ end
 service 'jenkins.agent' do
   action [:enable, :start]
 end
+
+package 'podman'
