@@ -1,5 +1,5 @@
 execute 'apt-get-update' do
-  command "apt-get update"
+  command 'apt-get update'
 end
 
 package 'fontconfig' do
@@ -11,8 +11,8 @@ package 'openjdk-11-jre' do
 end
 
 execute 'curl_agent' do
-  command "curl -sO http://jenkins-master:8080/jnlpJars/agent.jar"
-  cwd "/home/vagrant"
+  command 'curl -sO http://jenkins-master:8080/jnlpJars/agent.jar'
+  cwd '/home/vagrant'
 end
 
 directory '/var/lib/jenkins'

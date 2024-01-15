@@ -44,6 +44,13 @@ After the VM is provisioned by Vagrant, perform the following
 
     * knife bootstrap vagrant@$fq --node-name jenkins-jnlp --sudo --ssh-identity-file ~/.ssh/id_rsa --yes --ssh-verify-host-key never
 
+## Testing
+
+Note we exec everything in `chef exec` as we ant to constrain this all to the chef ruby, not the global ruby
+
+    * chef exec bundle install
+    * chef exec bundle binstubs --all
+
 ## Cookbooks
 
 A cookbook is the fundamental unit of configuration and policy distribution. A sample cookbook can be found in `cookbooks/starter`. After making changes to any cookbook, you must upload it to the Chef Infra Server using knife:

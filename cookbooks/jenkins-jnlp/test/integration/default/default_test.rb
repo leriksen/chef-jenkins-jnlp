@@ -4,6 +4,14 @@ unless os.windows?
   end
 end
 
-describe package('jenkins-jnlp-server') do
+describe package('fontconfig') do
+  it { should be_installed }
+end
+
+describe package('openjdk-11-jre') do
+  it { should be_installed }
+end
+
+describe package('podman') do
   it { should be_installed }
 end
