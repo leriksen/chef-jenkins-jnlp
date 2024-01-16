@@ -12,16 +12,16 @@ end
 
 execute 'curl_agent' do
   command 'curl -sO http://jenkins-master:8080/jnlpJars/agent.jar'
-  cwd '/home/vagrant'
+  cwd      "#{node['jenkins-jnlp']['agent_home']}"
 end
 
-directory '/var/lib/jenkins'
+directory "#{node['jenkins-jnlp']['var_path']}"
 
-template '/etc/systemd/system/jenkins.agent.service' do
+template "#{node['jenkins-jnlp']['service_file']}" do
   source 'jenkins.agent.service.erb'
-  owner  'root'
-  group  'root'
-  mode   '0655'
+  owner  "#{node['jenkins-jnlp']['agent_owner']}"
+  group  "#{node['jenkins-jnlp']['agent_group']}"
+  mode   "#{node['jenkins-jnlp']['agent_mode']}"
 end
 
 service 'jenkins.agent' do
