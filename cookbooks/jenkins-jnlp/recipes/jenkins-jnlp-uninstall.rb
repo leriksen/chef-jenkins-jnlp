@@ -3,13 +3,20 @@ service node['jenkins-jnlp']['service_name'] do
   action [ :stop ]
 end
 
-package node['jenkins-jnlp']['pkg_name'] do
+file "#{node['jenkins-jnlp']['agent_home']}/agent.jar" do
+  action :delete
+end
+
+package 'podman' do
   action :remove
 end
 
-file File.join(node['jenkins-jnlp']['sysconfig_dir'], node['jenkins-jnlp']['pkg_name']) do
-  action :delete
-  only_if { ::File.exist? File.join(node['jenkins-jnlp']['sysconfig_dir'], node['jenkins-jnlp']['pkg_name']) }
+package 'openjdk-11-jre' do
+  action :remove
 end
 
-# we leave the jenkins-jnlp logs in /var/log/jenkins-jnlp for post-mortems
+package 'fontconfig' do
+  action :remove
+end
+
+# we leave the jenkins-jnlp logs in /var/lib/jenkins for post-mortems
