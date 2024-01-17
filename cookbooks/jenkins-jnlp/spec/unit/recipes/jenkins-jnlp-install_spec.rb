@@ -1,9 +1,9 @@
 require 'spec_helper'
 
 describe 'jenkins-jnlp::jenkins-jnlp-install' do
-  let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'ubuntu', version: '22.04').converge(described_recipe)}
+  let(:chef_run) { ChefSpec::SoloRunner.new(platform: 'redhat', version: '8').converge(described_recipe)}
 
-  packages = %w(fontconfig openjdk-11-jre podman)
+  packages = %w(fontconfig java-17-openjdk podman)
   packages.each do |package|
     it 'installs the correct package' do
       expect(chef_run).to install_package(package)
@@ -11,7 +11,7 @@ describe 'jenkins-jnlp::jenkins-jnlp-install' do
   end
 
   it 'creates directory for agent work' do
-    expect(chef_run).to create_directory('/var/lib/jenkins')
+    expect(chef_run).to create_directory('/data/jenkins-agent/working-dir')
   end
 
   describe 'creates a template with attributes' do

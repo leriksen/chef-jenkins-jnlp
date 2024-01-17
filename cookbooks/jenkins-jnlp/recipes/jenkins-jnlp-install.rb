@@ -1,12 +1,12 @@
-execute 'apt-get-update' do
-  command 'apt-get update'
+execute 'package-update' do
+  command "#{node['packager']} update -y"
 end
 
 package 'fontconfig' do
   action :install
 end
 
-package 'openjdk-11-jre' do
+package node['java_jre'] do
   action :install
 end
 
@@ -15,7 +15,9 @@ execute 'curl_agent' do
   cwd      "#{node['jenkins-jnlp']['agent_home']}"
 end
 
-directory "#{node['jenkins-jnlp']['var_path']}"
+directory "#{node['jenkins-jnlp']['var_path']}" do
+  recursive true
+end
 
 template "#{node['jenkins-jnlp']['service_file']}" do
   source 'jenkins.agent.service.erb'

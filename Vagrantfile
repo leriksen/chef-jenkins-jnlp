@@ -7,8 +7,8 @@ Vagrant.configure('2') do |config|
     azure.vm_name              = 'jenkins-jnlp'
     azure.admin_username       = 'vagrant'
     azure.vm_size              = 'Standard_B2s'
-    azure.vm_image_urn         = 'Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest'
-    #     azure.vm_image_urn         = "RedHat:RHEL:86-gen2:latest"
+    # azure.vm_image_urn         = 'Canonical:0001-com-ubuntu-server-jammy:22_04-lts-gen2:latest'
+    azure.vm_image_urn         = "RedHat:RHEL:86-gen2:latest"
 
     azure.resource_group_name  = 'testing'
     azure.virtual_network_name = 'testing-vnet'
