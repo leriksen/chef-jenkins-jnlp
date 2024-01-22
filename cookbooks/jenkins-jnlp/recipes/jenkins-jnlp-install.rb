@@ -19,6 +19,9 @@ directory "#{node['jenkins-jnlp']['var_path']}" do
   recursive true
 end
 
+user  'jenkins'
+group 'jenkins'
+
 template "#{node['jenkins-jnlp']['service_file']}" do
   source 'jenkins.agent.service.erb'
   owner  "#{node['jenkins-jnlp']['agent_owner']}"
@@ -28,6 +31,7 @@ end
 
 service 'jenkins.agent' do
   action [:enable, :start]
+  user   "#{node['jenkins-jnlp']['service_runas']}"
 end
 
 package 'podman'
