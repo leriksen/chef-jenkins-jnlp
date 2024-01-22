@@ -1,0 +1,5 @@
+{
+  "ntlm_domain": "good.domain",
+  "ntlm_username": "good.user",
+  "ntlm_password": "hashed.value"
+}
