@@ -24,7 +24,7 @@ describe 'jenkins-jnlp::jenkins-jnlp-install' do
     }
   end
 
-  describe 'enableand start the agent service' do
+  describe 'enable and start the agent service' do
       it { is_expected.to enable_service('jenkins.agent') }
       it { is_expected.to start_service('jenkins.agent') }
     end

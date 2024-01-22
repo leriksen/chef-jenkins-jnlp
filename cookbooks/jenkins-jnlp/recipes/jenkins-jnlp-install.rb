@@ -1,5 +1,5 @@
 execute 'package-update' do
-  command "#{node['packager']} update -y"
+  command "#{node['packager']} update -y --nobest"
 end
 
 package 'fontconfig' do
@@ -31,7 +31,21 @@ end
 
 service 'jenkins.agent' do
   action [:enable, :start]
-  user   "#{node['jenkins-jnlp']['service_runas']}"
 end
 
 package 'podman'
+
+# cntlm
+execute 'rhel-add-epel7' do
+  command 'dnf install -y https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm'
+end
+
+execute 'package-update' do
+  command "#{node['packager']} update -y --nobest"
+end
+
+chef_sleep 'pause' do
+  seconds 30
+end
+
+package 'cntlm'
