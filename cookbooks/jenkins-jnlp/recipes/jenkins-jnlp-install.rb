@@ -56,14 +56,6 @@ end
 
 package 'cntlm'
 
-# this is just for local testing, can assume already present on target system
-template "#{node['jenkins_jnlp']['cntlm_data']}/#{node['jenkins_jnlp']['cntlm_file']}" do
-  source "#{node['jenkins_jnlp']['cntlm_file']}.erb"
-  owner  "#{node['jenkins_jnlp']['agent_owner']}"
-  group  "#{node['jenkins_jnlp']['agent_group']}"
-  mode   "#{node['jenkins_jnlp']['agent_mode']}"
-end
-
 cntlm = Cntlm.new "#{node['jenkins_jnlp']['cntlm_data']}/#{node['jenkins_jnlp']['cntlm_file']}"
 
 template "#{node['jenkins_jnlp']['cntlm_config']}" do
