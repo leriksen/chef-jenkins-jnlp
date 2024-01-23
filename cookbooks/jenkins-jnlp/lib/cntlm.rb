@@ -22,7 +22,7 @@ class Cntlm
   end
 
   class BadCntlm < StandardError
-    def initialize(msg = 'Bad CNTLM cpnfig json file')
+    def initialize(msg = 'Bad CNTLM config json file')
       super
     end
   end
