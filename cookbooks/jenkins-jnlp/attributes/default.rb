@@ -24,3 +24,8 @@ default['jenkins_jnlp']['agent_mode'   ] = '0655'
 default['jenkins_jnlp']['agent_master' ] = 'jenkins-master:8080'
 default['jenkins_jnlp']['service_runas'] = 'jenkins'
 default['jenkins_jnlp']['agent_key'    ] = 'f3257f85dde823aad3d099ae51d4ad20fe2a141642fa7dd71bb0bd6ebfe2cd7f'
+
+# these are just for local testing
+default['jenkins_jnlp']['cntlm_domain'   ] = 'good.domain'
+default['jenkins_jnlp']['cntlm_user'     ] = 'good.user'
+default['jenkins_jnlp']['cntlm_password' ] = 'secret.hash'
