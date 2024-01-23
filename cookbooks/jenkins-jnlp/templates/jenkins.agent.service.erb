@@ -6,9 +6,9 @@ After=network.target
 Type=simple
 Restart=always
 RestartSec=5
-User=<%=node['jenkins-jnlp']['agent_owner']%>
-WorkingDirectory=<%=node['jenkins-jnlp']['agent_home']%>
-ExecStart=java -jar <%=node['jenkins-jnlp']['agent_home']%>/agent.jar -jnlpUrl http://<%=node['jenkins-jnlp']['agent_master']%>/computer/agent/jenkins-agent.jnlp -secret <%=node['jenkins-jnlp']['agent_key']%> -workDir "<%=node['jenkins-jnlp']['var_path']%>"
+User=<%=node['jenkins_jnlp']['agent_owner']%>
+WorkingDirectory=<%=node['jenkins_jnlp']['agent_home']%>
+ExecStart=java -jar <%=node['jenkins_jnlp']['agent_home']%>/agent.jar -jnlpUrl http://<%=node['jenkins_jnlp']['agent_master']%>/computer/agent/jenkins-agent.jnlp -secret <%=node['jenkins_jnlp']['agent_key']%> -workDir "<%=node['jenkins_jnlp']['var_path']%>"
 
 [Install]
 WantedBy=multi-user.target
