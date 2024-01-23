@@ -1,4 +1,4 @@
-require 'cntlm'
+require_relative '../lib/cntlm'
 
 execute 'package-update' do
   command "#{node['packager']} update -y --nobest"
@@ -21,7 +21,7 @@ directory "#{node['jenkins_jnlp']['data_path']}" do
   recursive true
 end
 
-directory "#{node['jenkins_jnlp']['cntlm_path']}" do
+directory "#{node['jenkins_jnlp']['cntlm_data']}" do
   recursive true
 end
 
@@ -50,9 +50,9 @@ execute 'package-update' do
   command "#{node['packager']} update -y --nobest"
 end
 
-chef_sleep 'pause' do
-  seconds 30
-end
+# chef_sleep 'pause' do
+#   seconds 30
+# end
 
 package 'cntlm'
 
@@ -71,5 +71,10 @@ template "#{node['jenkins_jnlp']['cntlm_config']}" do
   owner  "#{node['jenkins_jnlp']['agent_owner']}"
   group  "#{node['jenkins_jnlp']['agent_group']}"
   mode   "#{node['jenkins_jnlp']['agent_mode']}"
+  variables(
+    :domain => cntlm.domain,
+    :username => cntlm.username,
+    :password => cntlm.password
+  )
 end
 

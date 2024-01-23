@@ -5,8 +5,8 @@
 # do not quote. Use 0600 perms if you use plaintext password.
 #
 
-Username <%=cntlm.username%>
-Domain   <%=cntlm.domain%>
+Username <%=@username%>
+Domain   <%=@domain%>
 # Password	password
 # NOTE: Use plaintext password only at your own risk
 # Use hashes instead. You can use a "cntlm -M" and "cntlm -H"
@@ -15,7 +15,7 @@ Domain   <%=cntlm.domain%>
 # Example secure config shown below.
 # PassLM          1AD35398BE6565DDB5C4EF70C0593492
 # PassNT          77B9081511704EE852F94227CF48A793
-PassNTLMv2      <%=cntlm.password%>
+PassNTLMv2      <%=@password%>
 
 # Specify the netbios hostname cntlm will send to the parent
 # proxies. Normally the value is auto-guessed.
