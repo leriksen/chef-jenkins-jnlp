@@ -1,4 +1,4 @@
-require_relative '../lib/cntlm'
+require_relative '../lib/secrets'
 
 execute 'package-update' do
   command "#{node['packager']} update -y --nobest"
@@ -21,18 +21,20 @@ directory "#{node['jenkins_jnlp']['data_path']}" do
   recursive true
 end
 
-directory "#{node['jenkins_jnlp']['cntlm_data']}" do
+directory "#{node['jenkins_jnlp']['secrets_data']}" do
   recursive true
 end
 
-user  'jenkins'
-group 'jenkins'
+secrets = Secrets.new "#{node['jenkins_jnlp']['secrets_data']}/#{node['jenkins_jnlp']['secrets_file']}"
 
 template "#{node['jenkins_jnlp']['service_file']}" do
   source 'jenkins.agent.service.erb'
   owner  "#{node['jenkins_jnlp']['agent_owner']}"
   group  "#{node['jenkins_jnlp']['agent_group']}"
   mode   "#{node['jenkins_jnlp']['agent_mode']}"
+  variables(
+    :jenkins_key => secrets.jenkins_key
+  )
 end
 
 service 'jenkins.agent' do
@@ -56,17 +58,15 @@ end
 
 package 'cntlm'
 
-cntlm = Cntlm.new "#{node['jenkins_jnlp']['cntlm_data']}/#{node['jenkins_jnlp']['cntlm_file']}"
-
 template "#{node['jenkins_jnlp']['cntlm_config']}" do
   source 'cntlm.conf.erb'
   owner  "#{node['jenkins_jnlp']['agent_owner']}"
   group  "#{node['jenkins_jnlp']['agent_group']}"
   mode   "#{node['jenkins_jnlp']['agent_mode']}"
   variables(
-    :domain => cntlm.domain,
-    :username => cntlm.username,
-    :password => cntlm.password
+    :domain => secrets.domain,
+    :username => secrets.username,
+    :password => secrets.password
   )
 end
 

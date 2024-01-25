@@ -8,8 +8,8 @@ when 'rhel', 'fedora'
 end
 
 default['jenkins_jnlp']['data_path'    ] = '/data/jenkins-agent/working-dir'
-default['jenkins_jnlp']['cntlm_data'   ] = '/var/build'
-default['jenkins_jnlp']['cntlm_file'   ] = 'secret.json'
+default['jenkins_jnlp']['secrets_data'   ] = '/var/build'
+default['jenkins_jnlp']['secrets_file'   ] = 'secret.json'
 default['jenkins_jnlp']['cntlm_config' ] = '/etc/cntlm.conf'
 default['jenkins_jnlp']['cntlm_port'   ] = '3128'
 default['jenkins_jnlp']['proxy_server' ] = 'good.proxy'

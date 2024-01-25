@@ -4,8 +4,8 @@ describe 'jenkins-jnlp::jenkins-jnlp-install' do
 
   platform 'redhat'
 
-  override_attributes['jenkins_jnlp']['cntlm_data'] = './spec/fixtures'
-  override_attributes['jenkins_jnlp']['cntlm_file'] = 'cntlm.json'
+  override_attributes['jenkins_jnlp']['secrets_data'] = './spec/fixtures'
+  override_attributes['jenkins_jnlp']['secrets_file'] = 'secrets.json'
 
   packages = %w(fontconfig java-17-openjdk podman)
   packages.each do |package|
