@@ -1,11 +1,11 @@
-require_relative '../lib/secrets'
+require_relative '../lib/agent/secrets'
 
-describe Secrets do
+describe Agent::Secrets do
   context 'good secrets' do
-    secrets = Secrets.new './spec/fixtures/secrets.json'
+    secrets = Agent::Secrets.new './spec/fixtures/secrets.json'
 
     it 'builds a new instance' do
-      expect(secrets).to be_an_instance_of(Secrets)
+      expect(secrets).to be_an_instance_of(Agent::Secrets)
     end
 
     it 'extracts the domain' do
@@ -27,13 +27,13 @@ describe Secrets do
 
   context 'bad json' do
     it 'rejects bad json files' do
-      expect { Secrets.new './spec/fixtures/bad.json' }.to raise_error(JSON::ParserError)
+      expect { Agent::Secrets.new './spec/fixtures/bad.json' }.to raise_error(JSON::ParserError)
     end
   end
 
   context 'bad secrets json' do
     it 'rejects bad secrets files' do
-      expect { Secrets.new './spec/fixtures/bad-secrets.json' }.to raise_error(Secrets::BadSecrets, './spec/fixtures/bad-secrets.json is missing required fields')
+      expect { Agent::Secrets.new './spec/fixtures/bad-secrets.json' }.to raise_error(Agent::Secrets::BadSecrets, './spec/fixtures/bad-secrets.json is missing required fields')
     end
   end
 end
