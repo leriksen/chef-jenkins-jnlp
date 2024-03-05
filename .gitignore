@@ -11,3 +11,4 @@ leriksen.pem
 syntaxcache
 chef_guid
 .data_bag_key
+.kitchen.local.yml
